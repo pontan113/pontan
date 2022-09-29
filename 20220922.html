@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>randomColor</title>
+
+    <style>
+        * {
+            margin: 0;
+        }
+
+        #div {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #div div {
+            border-radius: 50%;
+            margin: 7px;
+            overflow: hidden;
+            box-shadow: inset 0 0 7px 0px rgb(0 0 0 / 27%);
+        }
+
+        #div2 {
+            display: flex;
+            height: 100vh;
+            flex-wrap: wrap;
+            flex-direction: row;
+            overflow: hidden;
+            align-content: stretch;
+            justify-content: space-between;
+        }
+
+        div button {
+            background: #ffffff;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px 0px rgb(0 0 0 / 27%);
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .botan {
+            display: flex;
+            display: flex;
+            justify-content: center;
+        }
+
+        div button:active {
+            background: #e5e5e5;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="div2">
+    </div>
+    <div class="botan">
+        <button id="button">rand</button>
+    </div>
+    <div id="div">
+    </div>
+    <script>
+        randamu();
+        randamu2();
+
+        document.getElementById("button").addEventListener('click', ra);
+
+        function ra() {
+            randamu();
+            randamu2();
+        }
+
+        function randamu() {
+            const div = document.getElementById("div");
+            div.innerHTML = "";
+
+            var dhi = "";
+            var loop = 30;
+
+            for (var i = loop; i > 0; i--) {
+                var okisa = i * 15;
+                var color = "#" + Math.random().toString(16).slice(-6);
+                dhi += '<div style="width:' + okisa + 'px;' +
+                    'height:' + okisa + 'px;' +
+                    'background-color: ' + color + ';' + '">';
+            }
+            for (var i = 0; i < loop; i++) {
+                dhi += '</div>';
+            }
+            div.insertAdjacentHTML('afterbegin', dhi);
+        }
+
+        function randamu2() {
+            const div2 = document.getElementById("div2");
+            div2.innerHTML = "";
+            //            var loop2 = 200;
+            var loop2 = Math.random() * 180 + 10;
+            var dhi2 = "";
+            for (var i = loop2; i > 0; i--) {
+                var color = "#" + Math.random().toString(16).slice(-6);
+                dhi2 += '<div style="background-color: ' + color + ';' +
+                    'flex-grow: 1;flex-basis:35px;' +
+                    '">';
+                dhi2 += '</div>';
+            }
+            div2.insertAdjacentHTML('afterbegin', dhi2);
+        }
+
+    </script>
+</body>
+
+</html>
